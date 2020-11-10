@@ -1,0 +1,12 @@
+.Login {
+  height: 100vh;
+  background-color: var(--bg-color);
+  overflow: scroll;
+  display:flex;
+}
+.auth {
+  max-width: 400px;
+  /* display:flex; */
+  /* flex-direction: row; */
+  
+}

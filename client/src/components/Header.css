@@ -1,0 +1,24 @@
+.Header {
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Header .carousel{
+    height: 100%;
+    
+}
+.Header .carousel-inner{
+     height: 100%;
+}
+.Header .carousel-item{
+     height: 100%;
+     align-items: center;
+}
+.Header .carousel-caption{
+    top:45%;
+}

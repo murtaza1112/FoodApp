@@ -1,0 +1,36 @@
+.cardModal .readMore {
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  font-style: italic;
+  font-size: 15px;
+}
+.cardModal .carousel img{
+    object-fit: cover;
+}
+.cardModal .carousel {
+  width: 100%;
+  margin: 0;
+}
+.cardModal .heading {
+}
+.cardModal .stars{
+
+}
+.cardModal h4{
+    font-size:15px;
+}
+.cardModal .carousel_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardModal .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  border-radius : 10px;
+
+}
+
+@media and screen and (max-width: ){
+
+}

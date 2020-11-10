@@ -1,0 +1,68 @@
+:root {
+  --bg-color: #eeebe3;
+  --text-color: #333332;
+}
+
+.ListCard .card {
+  width: 250px;
+  height: 350px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--bg-color);
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+}
+
+.ListCard .Heading {
+  color: var(--gold);
+}
+.ListCard .price {
+  color: var(--text-color);
+  margin-top: 5px;
+}
+.ListCard .text {
+  color: var(--cardText);
+
+  font-size: 12px;
+}
+
+.ListCard .circular {
+  border-radius: 100px;
+  margin: 5px;
+}
+
+.ListCard img{
+    object-fit: cover;
+}
+.ListCard .pulse {
+  overflow: visible;
+  position: relative;
+}
+
+.ListCard .pulse:before {
+  transition: opacity 0.3s, transform 0.3s;
+  animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  z-index: -1;
+}
+@keyframes pulse-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.ListCard .readMore {
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  font-style: italic;
+  font-size: 15px;
+}

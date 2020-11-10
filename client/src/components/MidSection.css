@@ -1,0 +1,155 @@
+:root {
+  --gold: #b8965f;
+  --disabledLink: #695f4e;
+  --bgcolor: #f5f2ec;
+  --heading: #787876;
+  --insideTabColor: #f5f2ec;
+  --cardBgColor: #eeebe3;
+}
+
+nav {
+  flex-direction: row;
+  float: none;
+}
+
+.MidSection {
+  background-color: var(--bgcolor);
+}
+.MidSection_Heading {
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 0px;
+  color: var(--heading);
+}
+
+.MidSection_Tabs a {
+  color: var(--disabledLink);
+}
+.MidSection_Tabs {
+  max-width: 1000px;
+  align-items: center;
+  margin : 0 auto;
+
+}
+
+.MidSection_Tabs .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--gold);
+  border: none;
+  border-bottom: 4px solid var(--gold);
+
+  /* background-color: red; */
+}
+.MidSection_Tabs nav {
+  padding-top: 2%;
+}
+.MidSection_Tabs .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--gold);
+  border: none;
+  border-bottom: 4px solid var(--gold);
+  background-color: var(--insideTabColor);
+}
+
+.MidSection_Tabs .nav-tabs {
+  border-bottom: 1px solid #d6cbad;
+}
+
+.MidSection_Tabs .nav-tabs :hover {
+  border-bottom: 4px solid var(--gold);
+  color: var(--gold);
+}
+
+@media screen and (max-width: 422px) {
+  .MidSection_Tabs nav {
+    flex-direction: column;
+  }
+}
+
+/* @media screen and (min-width: 800px) {
+  .MidSection_Tabs {
+    margin-right: 8%;
+    margin-left: 8%;
+  }
+} */
+/* .demo{ background: #efd391; }
+
+.MideSection_Tabs a:hover,a:focus{
+  outline: none;
+  text-decoration: none;
+}
+.MidSection_Tabs .tab .nav-tabs{
+  position: relative;
+  border-bottom: none;
+}
+.MidSection_Tabs .tab .nav-tabs li{
+  text-align: center;
+  margin-right: 10px;
+}
+.MidSection_Tabs .tab .nav-tabs li a{
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+  padding: 10px 15px;
+  background: transparent;
+  margin-right: 0;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease 0s;
+}
+.MidSection_Tabs .tab .nav-tabs li a:before{
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: #de7921;
+  position: absolute;
+  top: 92%;
+  left: 0;
+  transition: all 0.3s ease 0s;
+}
+.MidSection_Tabs .tab .nav-tabs li a:hover:before,
+.MidSection_Tabs .tab .nav-tabs li.active a:before,
+.MidSection_Tabs .tab .nav-tabs li.active a:hover:before{
+  top: 0;
+}
+.MidSection_Tabs .tab .nav-tabs li a:after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+.MidSection_Tabs .tab .nav-tabs li a:hover:after,
+.MidSection_Tabs .tab .nav-tabs li.active a:after,
+.MidSection_Tabs .tab .nav-tabs li.active a:hover:after{
+  top: 0;
+}
+.MidSection_Tabs .nav-tabs li.active a,
+.MidSection_Tabs .nav-tabs li.active a:focus,
+.MidSection_Tabs .nav-tabs li.active a:hover,
+.MidSection_Tabs .nav-tabs li a:hover{
+  border: none;
+}
+
+.MidSection_Tabs .tab .tab-content{
+  padding: 30px 15px 20px;
+  background: #fff;
+  font-size: 14px;
+  color: #555;
+  line-height: 26px;
+}
+.MidSection_Tabs .tab .tab-content h3{
+  font-size: 24px;
+  margin-top: 0;
+}
+@media only screen and (max-width: 479px){
+  .MidSection_Tabs .tab .nav-tabs li{ width: 100%; }
+} */
