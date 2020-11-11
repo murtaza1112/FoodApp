@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ListSchema = require("./ListSchema");
 
 const UserSchema = new mongoose.Schema({
   local: {
@@ -11,12 +12,14 @@ const UserSchema = new mongoose.Schema({
       type: String,
     },
   },
-  list: [
-    { itemId: { type: Number }, createdAt: { type: Date, default: Date.now } },
-  ],
+  list: [ListSchema],
   google: {
     id: String,
     email: String,
+  },
+  admin: {
+    type: Boolean,
+    default: false,
   },
 });
 const saltRounds = 10;

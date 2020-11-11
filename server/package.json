@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@admin-bro/upload": "^1.2.0",
+    "admin-bro": "^3.3.1",
+    "admin-bro-expressjs": "^2.1.1",
+    "admin-bro-mongoose": "^0.5.2",
     "bcrypt": "^5.0.0",
     "cookie-session": "^1.4.0",
     "passport": "^0.4.1"

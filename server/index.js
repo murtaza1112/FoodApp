@@ -1,18 +1,17 @@
-const express =  require("express");
-      cors = require("cors");
-      cookieSession = require("cookie-session"); 
-      cookieParser = require("cookie-parser");
-      bodyParser = require("body-parser")
-      keys = require("./config/keys");   
-      app = express();          
-      port = keys.PORT;
-      passport = require("passport");
-      mongoose  = require("mongoose");
-
-
-mongoose.connect(keys.MONGODB_URI,{ useNewUrlParser: true,useUnifiedTopology: true });
-require("./models/User");
-require("./services/passport");
+const express = require("express");
+cors = require("cors");
+cookieSession = require("cookie-session");
+cookieParser = require("cookie-parser");
+bodyParser = require("body-parser");
+keys = require("./config/keys");
+app = express();
+port = keys.PORT;
+passport = require("passport");
+mongoose = require("mongoose");
+AdminBro = require("admin-bro");
+AdminBroExpress = require("admin-bro-expressjs");
+List =  require("./models/List");
+uploadFeature = require("@admin-bro/upload");
 //middleware
 app.use(bodyParser.json());
 
@@ -30,6 +29,71 @@ app.use(passport.session());
 require("./routes/User")(app);
 require("./routes/List")(app);
 
-app.listen(port,(req,res)=>{
-    console.log("The port is listening on server :",port)
-})
+AdminBro.registerAdapter(require("admin-bro-mongoose"));
+
+const User = require("./models/User");
+require("./services/passport");
+const ListSchema = require("./models/ListSchema");
+
+const validation = {
+  mimeTypes: ["image/jpeg", "image/png"],
+};
+const adminBro = new AdminBro({
+  resources: [
+    {
+      resource: User,
+      options: {
+        properties: {
+          "local.password": {
+            isVisible: false,
+          },
+        },
+      },
+    },
+    {
+      resource: List,
+      features: [
+        uploadFeature({
+          provider: { local: { bucket: "uploads" } },
+          properties: {
+            key: "uploadedFile.path",
+            bucket: "uploadedFile.folder",
+            mimeType: "uploadedFile.type",
+            size: "uploadedFile.size",
+            filename: "uploadedFile.filename",
+            file: "uploadFile",
+          },
+          validation,
+        }),
+      ],
+    },
+  ],
+  rootPath: "/admin",
+});
+
+// Build and use a router which will handle all AdminBro routes
+let router = express.Router();
+router.use((req, res, next) => {
+  console.log("Router called");
+  // console.log(req.session);
+  console.log(req.user);
+  if (req.user.admin) next();
+  else res.redirect("/");
+  // res.redirect("/api/current");
+});
+router = AdminBroExpress.buildRouter(adminBro, router);
+
+app.use(adminBro.options.rootPath, router);
+
+// Running the server
+const run = async () => {
+  await mongoose.connect(keys.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  await app.listen(port, (req, res) => {
+    console.log("The port is listening on server :", port);
+  });
+};
+
+run();

@@ -7,7 +7,7 @@ import Login from "./Login";
 import Landing from "./Landing";
 import List from "./List";
 import Navbar from "./Navbar";
-
+import AdminControl from "./AdminControl";
 class App extends React.Component {
   componentDidMount() {
     console.log("get user.")
@@ -23,6 +23,7 @@ class App extends React.Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/list" component={List} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/admin" component={AdminControl} />
         </BrowserRouter>
       </div>
     );
