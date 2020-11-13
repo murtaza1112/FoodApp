@@ -1,42 +1,18 @@
 const mongoose = require("mongoose");
 
 const ListSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
-  },
-  shortDescription: {
-    type: String,
-    required: true,
-  },
+  image: String,
+  description: String,
+  name: String,
+  price: Number,
   reviews: [
     {
-      rating: {
-        type: Number,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-        required: true,
-      },
+      name: String,
+      rating: Number,
+      description: String,
     },
   ],
-  name: {
-    type: String,
-    required: true,
-  },
-  uploadedFile: {
-    path: String,
-    type: String,
-    size: Number,
-    folder: String,
-    filename: String,
-  },
+  type : String
 });
-
 
 module.exports = ListSchema;

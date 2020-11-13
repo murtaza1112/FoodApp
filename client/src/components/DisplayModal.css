@@ -12,6 +12,9 @@
   width: 100%;
   margin: 0;
 }
+.cardModal .modal-footer{
+  justify-content:center;
+}
 .cardModal .heading {
 }
 .cardModal .stars{

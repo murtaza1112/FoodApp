@@ -12,7 +12,7 @@ module.exports = (app) => {
     function (req, res) {
       // Successful authentication, redirect home.
       console.log("The req.user is:", req.user);
-      res.redirect("/");
+      res.send(req.user);
     }
   );
   app.get("/api/logout", (req, res) => {

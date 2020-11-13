@@ -37,8 +37,8 @@ function DisplayModal(props) {
   const handleShow = () => setShow(true);
 
   const { details } = props;
-  console.log(details.photoUrl);
-  const url = details.photoUrl + ".jpg";
+  console.log(details);
+  const url = details.image;
   var currentString = `carousel`+details.id;
   return (
     <div class="cardModal">
@@ -52,7 +52,8 @@ function DisplayModal(props) {
         </Modal.Header>
         <Modal.Body>
           <Carousel indicators={false} className={currentString}>
-            {details.reviews.map((review) => {
+            {console.log(details.reviews),console.log(details)}
+            {details && details.reviews && details.reviews.map((review) => {
               return (
                 // <div className="carousel_item">
 
@@ -60,7 +61,7 @@ function DisplayModal(props) {
                   <img src={url} />
                   <Carousel.Caption>
                     <p>{review.description}</p>
-                    <h4>{`-` + review.Name}</h4>
+                    <h4>{`-` + review.name}</h4>
                     <span class="stars">
                       {renderStars(review.rating).map((elem) => elem)}
                     </span>
@@ -71,7 +72,7 @@ function DisplayModal(props) {
             })}
           </Carousel>
         </Modal.Body>
-        <Modal.Footer>{details.Description}</Modal.Footer>
+        <Modal.Footer>{details.description}</Modal.Footer>
       </Modal>
     </div>
   );

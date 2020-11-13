@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Header from "./Header";
-
+import {connect} from "react-redux";
+import history from "../history";
 import MidSection from "./MidSection";
 class Landing extends Component {
-  static propTypes = {};
-
+     
   render() {
+    
     return (
       <div>
         {/* Header  */}
@@ -17,5 +18,7 @@ class Landing extends Component {
     );
   }
 }
-
-export default Landing;
+const mapStateToProps = ({auth}) =>{
+  return {auth}
+}
+export default connect(mapStateToProps,null)(Landing);

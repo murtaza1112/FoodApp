@@ -10,10 +10,14 @@ passport = require("passport");
 mongoose = require("mongoose");
 AdminBro = require("admin-bro");
 AdminBroExpress = require("admin-bro-expressjs");
-List =  require("./models/List");
 uploadFeature = require("@admin-bro/upload");
+var cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
+
 //middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 //to inform passport to use cookie based auth
 app.use(
@@ -29,61 +33,66 @@ app.use(passport.session());
 require("./routes/User")(app);
 require("./routes/List")(app);
 
-AdminBro.registerAdapter(require("admin-bro-mongoose"));
+// AdminBro.registerAdapter(require("admin-bro-mongoose"));
 
-const User = require("./models/User");
+require("./models/User");
+require("./models/Indian");
+require("./models/Italian");
+require("./models/Chinese");
+require("./models/Continental");
 require("./services/passport");
-const ListSchema = require("./models/ListSchema");
 
-const validation = {
-  mimeTypes: ["image/jpeg", "image/png"],
-};
-const adminBro = new AdminBro({
-  resources: [
-    {
-      resource: User,
-      options: {
-        properties: {
-          "local.password": {
-            isVisible: false,
-          },
-        },
-      },
-    },
-    {
-      resource: List,
-      features: [
-        uploadFeature({
-          provider: { local: { bucket: "uploads" } },
-          properties: {
-            key: "uploadedFile.path",
-            bucket: "uploadedFile.folder",
-            mimeType: "uploadedFile.type",
-            size: "uploadedFile.size",
-            filename: "uploadedFile.filename",
-            file: "uploadFile",
-          },
-          validation,
-        }),
-      ],
-    },
-  ],
-  rootPath: "/admin",
-});
+// const ListSchema = require("./models/ListSchema");
 
-// Build and use a router which will handle all AdminBro routes
-let router = express.Router();
-router.use((req, res, next) => {
-  console.log("Router called");
-  // console.log(req.session);
-  console.log(req.user);
-  if (req.user.admin) next();
-  else res.redirect("/");
-  // res.redirect("/api/current");
-});
-router = AdminBroExpress.buildRouter(adminBro, router);
+// const validation = {
+//   mimeTypes: ["image/jpeg", "image/png"],
+// };
+// const adminBro = new AdminBro({
+//   resources: [
+//     {
+//       resource: User,
+//       options: {
+//         properties: {
+//           "local.password": {
+//             isVisible: false,
+//           },
+//         },
+//       },
+//     },
+//     {
+//       resource: List,
+//       features: [
+//         uploadFeature({
+//           provider: { local: { bucket: "uploads" } },
+//           properties: {
+//             key: "uploadedFile.path",
+//             bucket: "uploadedFile.folder",
+//             mimeType: "uploadedFile.type",
+//             size: "uploadedFile.size",
+//             filename: "uploadedFile.filename",
+//             file: "uploadFile",
+//           },
+//           validation,
+//         }),
+//       ],
+//     },
+//   ],
+//   rootPath: "/admin",
+// });
 
-app.use(adminBro.options.rootPath, router);
+// // Build and use a router which will handle all AdminBro routes
+// let router = express.Router();
+// router.use((req, res, next) => {
+//   console.log("Router called");
+//   // console.log(req.session);
+//   console.log(req.user);
+//   if (req.user.admin) next();
+//   else res.redirect("/");
+//   // res.redirect("/api/current");
+// });
+// router = AdminBroExpress.buildRouter(adminBro, router);
+
+// app.use(adminBro.options.rootPath, router);
 
 // Running the server
 const run = async () => {

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Navbar as NavBar, Nav } from "react-bootstrap";
 import * as actions from "../actions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 // class Navbar extends Component {
 //   state = { changeIcon: true };
@@ -73,23 +73,32 @@ import {connect} from "react-redux";
 // }
 
 class Navbar extends React.Component {
+
+  onLogOut = () =>{
+    this.props.LogOutUser();
+  }
   render() {
     return (
-      <NavBar bg="dark" expand="lg">
-        <NavBar.Brand href="#home">Foodzie</NavBar.Brand>
+      <NavBar sticky="top" bg="dark" expand="lg">
+        <NavBar.Brand href="/">Foodzie</NavBar.Brand>
         <NavBar.Toggle aria-controls="basic-navbar-nav" />
         <NavBar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">
-              <Link to="/">Home</Link>
-            </Nav.Link>
-            <Nav.Link href="#link">
-              <Link to="/list">My Favourites</Link>
-            </Nav.Link>
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+            <Link to="/list" className="nav-link">
+              My Favourites
+            </Link>
+
             {this.props.auth ? (
-              <Link to="/api/logout">Logout</Link>
+              <Link className="nav-link" onClick={this.onLogOut}>
+                Logout
+              </Link>
             ) : (
-              <Link to="/login">Login</Link>
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
             )}
           </Nav>
         </NavBar.Collapse>
@@ -103,4 +112,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, actions)(Navbar);
-

@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import { Tabs,Tab,Button } from "react-bootstrap";
+import { Tabs, Tab, Button } from "react-bootstrap";
 // import "./Login.css";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import "./Login.css";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class LoginAndSignUp extends Component {
+  onGoogleSign = () => {
+    this.props.googleSignIn();
+    console.log("Google sign in called.");
+  };
   render() {
     return (
       <div className="Login">
@@ -18,11 +24,11 @@ class LoginAndSignUp extends Component {
               <SignUpForm />
             </Tab>
           </Tabs>
-          <Button href="/auth/google">Google SignIn</Button>
+          <Button onClick={this.onGoogleSign}>Google SignIn</Button>
         </div>
       </div>
     );
   }
 }
 
-export default LoginAndSignUp;
+export default connect(null, actions)(LoginAndSignUp);
