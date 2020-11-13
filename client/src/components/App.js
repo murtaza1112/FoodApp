@@ -10,7 +10,6 @@ import Navbar from "./Navbar";
 import AdminView from "./AdminView";
 import AdminNew from "./AdminNew";
 import AdminEdit from "./AdminEdit";
-import AdminShow from "./AdminShow";
 import history from "../history";
 
 
@@ -19,15 +18,22 @@ class App extends React.Component {
     // debugger;
     console.log("get user.")
     this.props.fetchUser();
-    this.props.fetchItems("italian");
-    this.props.fetchItems("continental");
-    this.props.fetchItems("indian");
-    this.props.fetchItems("chinese");
+    // this.props.fetchItems("italian");
+    // this.props.fetchItems("continental");
+    // this.props.fetchItems("indian");
+    // this.props.fetchItems("chinese");
   }
   render() {
     console.log(this.state)
     if (this.props.auth === false) {
       history.push("/login");
+    }
+    if(this.props.auth===null){
+      return(
+        <div>
+          Loading...
+        </div>
+      )
     }
     return (
       <div className="App">
@@ -41,7 +47,6 @@ class App extends React.Component {
 
             <Route exact path="/admin" component={AdminView} />
             <Route exact path="/admin/new" component={AdminNew} />
-            <Route exact path="/admin/view/:id" component={AdminShow} />
             <Route exact path="/admin/edit/:id" component={AdminEdit} />
           </Switch>
         </Router>

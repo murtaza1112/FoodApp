@@ -129,8 +129,8 @@ class ListCard extends Component {
             break;
          }
     }
-    console.log(this.props.details._id)
-    console.log(this.props.auth.list);
+    // console.log(this.props.details._id)
+    // console.log(this.props.auth.list);
     if(check){
       disabled = true;
       text = "Already Your Favorite :)";
@@ -156,7 +156,7 @@ class ListCard extends Component {
   };
   generatePersonCard = () => {
     const { details } = this.props;
-    console.log(details);
+    // console.log(details);
     // console.log(this.state.show);
     return (
       <div className="ListCard">
@@ -208,8 +208,8 @@ class ListCard extends Component {
   render() {
     // console.log(this.props.details);
     //return a image card or a person card
-    console.log(this.props.details);
-    console.log(this.state.show);
+    // console.log(this.props.details);
+    // console.log(this.state.show);
     return this.generatePersonCard();
   }
 }

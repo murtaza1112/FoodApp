@@ -6,3 +6,5 @@ export const CREATE_ITEM = "create_item";
 export const UPDATE_ITEM = "update_item";
 export const DELETE_ITEM = "delete_item";
 export const FETCH_ITEM = "fetch_item";
+
+export const FETCH_SIZE = "fetch_size";

@@ -4,13 +4,17 @@ import { connect } from "react-redux";
 import { Alert, Container, Row, Button,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./List.css";
-import data from "../misc/data";
 import ListCard from "./ListCard";
 
 class List extends Component {
   //   componentDidMount() {
   //     this.props.fetchUser();
   //   }
+
+  componentDidMount(){
+    
+  }
+
   renderCards() {
     console.log(this.props.auth);
     if (this.props.auth.list.length === 0) {

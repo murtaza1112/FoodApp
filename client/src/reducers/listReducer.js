@@ -15,10 +15,11 @@ const INTIAL_STATE = {
 };
 
 export const listReducer = (state = INTIAL_STATE, action) => {
+  // console.log(action.payload);
   console.log(action.payload);
   if(!action.payload)
   return state;
-
+ 
   switch (action.type) {
     case CREATE_ITEM:
       return {

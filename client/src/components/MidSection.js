@@ -4,6 +4,7 @@ import { Container, Row, Tab, Tabs, Col } from "react-bootstrap";
 import ListCard from "./ListCard";
 import * as actions from "../actions";
 import { connect } from "react-redux";
+import PaginationSection from "./PaginationSection";
 
 class MidSection extends React.Component {
   renderCards(type) {
@@ -31,25 +32,29 @@ class MidSection extends React.Component {
               <div class="MidSection_Heading">
                 <h1>Chinese</h1>
               </div>
-              <Row>{this.renderCards("chinese")}</Row>
+              {/* <Row>{this.renderCards("chinese")}</Row> */}
+              <PaginationSection type="chinese" />
             </Tab>
             <Tab eventKey="Indian" title="Indian">
               <div class="MidSection_Heading">
                 <h1>Indian</h1>
               </div>
-              <Row>{this.renderCards("indian")}</Row>
+              {/* <Row>{this.renderCards("indian")}</Row> */}
+              <PaginationSection type="indian" />
             </Tab>
             <Tab eventKey="Italian" title="Italian">
               <div class="MidSection_Heading">
                 <h1>Italian</h1>
               </div>
-              <Row>{this.renderCards("italian")}</Row>
+              {/* <Row>{this.renderCards("italian")}</Row> */}
+              <PaginationSection type="italian" />
             </Tab>
             <Tab eventKey="Continental" title="Continental">
               <div class="MidSection_Heading">
                 <h1>Continental</h1>
               </div>
-              <Row>{this.renderCards("continental")}</Row>
+              {/* <Row>{this.renderCards("continental")}</Row> */}
+              <PaginationSection type="continental" />
             </Tab>
           </Tabs>
         </div>

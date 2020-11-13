@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListCardTemplate from "./ListCardTemplate";
+import * as actions from "../actions";
 
 class AdminView extends Component {
+  componentDidMount() {
+    this.props.fetchItems("italian");
+    this.props.fetchItems("continental");
+    this.props.fetchItems("indian");
+    this.props.fetchItems("chinese");
+  }
   renderCards() {
     // console.log(this.props.list);
     var final = [];
@@ -33,4 +40,4 @@ class AdminView extends Component {
 const mapStateToProps = ({ list }) => {
   return { list };
 };
-export default connect(mapStateToProps, null)(AdminView);
+export default connect(mapStateToProps, actions)(AdminView);
