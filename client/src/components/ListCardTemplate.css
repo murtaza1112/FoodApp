@@ -3,43 +3,66 @@
   --text-color: #333332;
 }
 
-.ListCard .card {
+.ListCardTemplate{
+  padding-top:5px;
+}
+.ListCardTemplate .card {
   width: 250px;
   margin: 0 auto;
   text-align: center;
   background-color: var(--bg-color);
   border: 1px solid var(--gold);
   border-radius: 5px;
-  margin-bottom: 10px;
+  
 }
 
-.ListCard .Heading {
-  color: var(--gold);
+.ListCardTemplate .card-body{
+  padding:0px;
+  display: flex;
+  flex-flow: column;
+  
 }
-.ListCard .price {
+.ListCardTemplate .Heading {
+  color: var(--gold);
+  padding-top: 10px;
+}
+.ListCardTemplate .price {
   color: var(--text-color);
   margin-top: 5px;
 }
-.ListCard .text {
+.ListCardTemplate .text {
   color: var(--cardText);
 
   font-size: 12px;
 }
 
-.ListCard .circular {
+.ListCardTemplate .circular {
   border-radius: 100px;
   margin: 5px;
 }
-
-.ListCard img{
-    object-fit: cover;
+.ListCardTemplate .card-text{
+  max-height: 100px;
+  overflow: hidden;
 }
-.ListCard .pulse {
+.ListCardTemplate .list-footer{
+  /* flex-grow : 1;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center; */
+  padding:10px;
+}
+.ListCardTemplate img{
+    object-fit: cover;
+    height:250px;
+    padding: 0px;
+}
+.ListCardTemplate .pulse {
   overflow: visible;
   position: relative;
 }
 
-.ListCard .pulse:before {
+.ListCardTemplate .pulse:before {
   transition: opacity 0.3s, transform 0.3s;
   animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
   z-index: -1;
@@ -59,15 +82,10 @@
   }
 }
 
-.ListCard .readMore {
+.ListCardTemplate .readMore {
   background-color: transparent;
   text-decoration: underline;
   border: none;
   font-style: italic;
   font-size: 15px;
-}
-
-.ListCard .list-body-card{
-  max-height: 100px;
-  overflow: hidden;
 }

@@ -65,6 +65,7 @@ passport.use(
           return done(null, false);
         }
         console.log("Correct password given.");
+        
         return done(null, user);
       });
     }

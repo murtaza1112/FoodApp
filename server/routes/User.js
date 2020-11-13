@@ -20,7 +20,9 @@ module.exports = (app) => {
     res.redirect("/");
   });
   app.get("/api/current", (req, res) => {
+    console.log("Checking if user is valifated or not.");
     console.log(req.user);
+    if (!req.user) return res.send(false);
     res.send(req.user);
   });
   app.get("/", (req, res) => {
@@ -28,19 +30,53 @@ module.exports = (app) => {
     res.send(req.user);
   });
 
-  app.post(
-    "/api/login",
-    passport.authenticate("local", {
-      successRedirect: "/api/current",
-      failureRedirect: "/",
-    }),
-    function (req, res) {
-      console.log(req.body);
-      // If this function gets called, authentication was successful.
-      // `req.user` contains the authenticated user.
-      res.send(req.body);
-    }
-  );
+  // app.post(
+  //   "/api/login",
+  //   function (req, res) {
+
+  //     passport.authenticate('login',
+  //         {
+  //           //by default, local strategy uses username and password, we will override with email
+  //           usernameField: "email",
+  //           passwordField: "password",
+  //         },
+  //         function (email, password, done) {
+  //           //   console.log(email);
+  //           //   console.log(password);
+
+  //         }
+  //       )
+  //     console.log(req.body);
+  //     // If this function gets called, authentication was successful.
+  //     // `req.user` contains the authenticated user.
+  //     res.send(req.body);
+  //   }
+  // );
+
+  app.post("/api/login", function (req, res, next) {
+    console.log("LOGIN CALLED.");
+    passport.authenticate("local", function (err, user, info) {
+      console.log("CALLBACK PASSED:", user, err);
+      if (err) {
+        return next(err);
+      }
+      console.log("Api called.", user);
+      if (!user) {
+        console.log("NO USER FOUND.");
+        return res.send(false);
+      }
+      req.logIn(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        if (err) {
+          return next(err);
+        }
+        return res.send(user);
+      });
+    })(req, res, next);
+    console.log("LOGIN API ENDING");
+  });
 
   //   app.post("/api/signup", async (req, res) => {
   //     const { email, password } = req.body;
@@ -63,13 +99,33 @@ module.exports = (app) => {
   //       failureRedirect: "/",
   //     });
   //   });
-  app.post(
-    "/api/signup",
-    passport.authenticate("local-signup", {
-      failureRedirect: "/",
-    }),
-    (req, res) => {
-      res.send(req.user);
-    }
-  );
+  app.post("/api/signup", (req, res, next) => {
+    passport.authenticate("local-signup", function (err, user, info) {
+      req.logIn(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        return res.send(user);
+      });
+    })(req, res, next);
+    console.log("this part called");
+    res.send(false);
+  });
+
+  app.post("/api/user", async (req, res) => {
+    console.log(req.body);
+    const item = req.body;
+    req.user.list.push(item);
+    await req.user.save();
+    console.log(item, req.user);
+    res.send(req.user);
+  });
+
+  app.delete("/api/user", async (req, res) => {
+    console.log(req.body);
+    req.user.list = req.user.list.filter((elem) => elem.id !== req.body.id);
+    await req.user.save();
+    console.log(req.user);
+    res.send(req.user);
+  });
 };

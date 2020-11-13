@@ -78,6 +78,9 @@ class Navbar extends React.Component {
     this.props.LogOutUser();
   }
   render() {
+    // console.log(this.props);
+    console.log(this.props.auth);
+
     return (
       <NavBar sticky="top" bg="dark" expand="lg">
         <NavBar.Brand href="/">Foodzie</NavBar.Brand>
@@ -100,6 +103,19 @@ class Navbar extends React.Component {
                 Login
               </Link>
             )}
+
+            {this.props.auth && this.props.auth.admin ? (
+              <Link className="nav-link" to="/admin">Show Items</Link>
+            ) : (
+              <span></span>
+            )}
+            {this.props.auth && this.props.auth.admin ? (
+              <Link className="nav-link" to="/admin/new">
+                Add Item
+              </Link>
+            ) : (
+              <span></span>
+            )}
           </Nav>
         </NavBar.Collapse>
       </NavBar>
@@ -108,6 +124,7 @@ class Navbar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return { auth: state.auth };
 };
 

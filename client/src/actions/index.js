@@ -6,9 +6,10 @@ import {
   FETCH_ITEMS,
   UPDATE_ITEM,
   CREATE_ITEM,
-  FETCH_ITEM
+  FETCH_ITEM,
 } from "./types";
 import history from "../history";
+
 //User actions
 //signUp
 export const createUser = (user) => async (dispatch) => {
@@ -32,6 +33,7 @@ export const googleSignIn = () => async (dispatch) => {
 };
 //getUser
 export const fetchUser = () => async (dispatch) => {
+  console.log("User is beign fethced.");
   const res = await axios.get("/api/current");
   console.log(res);
   dispatch({ type: FETCH_USER, payload: res.data });
@@ -46,18 +48,20 @@ export const LogOutUser = () => async (dispatch) => {
   history.push("/login");
   dispatch({ type: FETCH_USER, payload: false });
 };
+
 //update_user
-export const addInList = (id) => async (dispatch) => {
-  const res = await axios.patch(`/api/list/` + id, id);
+export const addInList = (item) => async (dispatch) => {
+  console.log("Add in list.",item)
+  const res = await axios.post(`/api/user/`, item);
   console.log(res);
-  dispatch({ type: UPDATE_USER, payload: res.data });
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 //update_user
 export const removeFromList = (id) => async (dispatch) => {
-  console.log("Delete called");
-  const res = await axios.post(`/api/list/` + id, id);
+  console.log("Delete from list",id);
+  const res = await axios.delete(`/api/user`, { data: {id} });
   console.log(res);
-  dispatch({ type: UPDATE_USER, payload: res.data });
+  dispatch({ type: FETCH_USER, payload: res.data });
 };
 
 //List actions
@@ -80,12 +84,11 @@ export const fetchItems = (type) => async (dispatch) => {
 };
 
 export const fetchItem = (id) => async (dispatch) => {
-  const res = await axios.get(baseUrl +"single/" + id);
-  console.log("Usre has to be fethced.")
+  const res = await axios.get(baseUrl + "single/" + id);
+  console.log("Usre has to be fethced.");
   console.log(res);
   dispatch({ type: FETCH_ITEM, payload: res.data });
 };
-
 
 export const removeItem = (id, type) => async (dispatch) => {
   console.log("Delete item");
@@ -99,5 +102,5 @@ export const updateItem = (item, oldItem) => async (dispatch) => {
   const res = await axios.patch(baseUrl + oldItem.type + "/" + item._id, item);
   console.log(res);
   history.push("/admin");
-  dispatch({ type: UPDATE_ITEM, payload: {oldItem,data:res.data} });
+  dispatch({ type: UPDATE_ITEM, payload: { oldItem, data: res.data } });
 };

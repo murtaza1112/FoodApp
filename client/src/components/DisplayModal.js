@@ -11,14 +11,14 @@ function maxReviewSize(currentString) {
 
   var Height = 0;
   for(var i=0;i<reviews.length;i++){
-      console.log(reviews[i].clientHeight);
+      // console.log(reviews[i].clientHeight);
       Height = Math.max(Height,reviews[i].clientHeight);
   }
-  console.log(reviews);
-  console.log(Height);
-  console.log(carousel);
-  if(carousel)
-  console.log("Carousel height is :",carousel.clientHeight);
+  // console.log(reviews);
+  // console.log(Height);
+  // console.log(carousel);
+  // if(carousel)
+  // console.log("Carousel height is :",carousel.clientHeight);
 //   if(carousel.clientHeight<)
 }
 function renderStars(value) {
@@ -37,7 +37,7 @@ function DisplayModal(props) {
   const handleShow = () => setShow(true);
 
   const { details } = props;
-  console.log(details);
+  // console.log(details);
   const url = details.image;
   var currentString = `carousel`+details.id;
   return (
@@ -52,7 +52,7 @@ function DisplayModal(props) {
         </Modal.Header>
         <Modal.Body>
           <Carousel indicators={false} className={currentString}>
-            {console.log(details.reviews),console.log(details)}
+            {/* {console.log(details.reviews),console.log(details)} */}
             {details && details.reviews && details.reviews.map((review) => {
               return (
                 // <div className="carousel_item">

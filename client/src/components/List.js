@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchUser } from "../actions";
 import { connect } from "react-redux";
-import { Alert, Container, Row, Button } from "react-bootstrap";
+import { Alert, Container, Row, Button,Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./List.css";
 import data from "../misc/data";
@@ -26,8 +26,11 @@ class List extends Component {
     }
 
     var ret = this.props.auth.list.map((elem) => {
-      console.log(elem.itemId);
-      return <ListCard details={data[elem.itemId]} added/>;
+      return (
+        <Col xs={12} sm={12} md={6} lg={3}>
+          <ListCard details={elem} added />
+        </Col>
+      );
     });
     return ret;
   }
@@ -58,14 +61,18 @@ class List extends Component {
 
     return (
       <div className="List">
-        <div className="header">
-          <h1>My Favourites</h1>
-        </div>
-        {this.props.auth === null
-          ? this.renderLoading()
-          : this.props.auth === false
-          ? this.renderError()
-          : this.renderCards()}
+        <Container>
+          <div className="header">
+            <h1>My Favourites</h1>
+          </div>
+          <Row>
+            {this.props.auth === null
+              ? this.renderLoading()
+              : this.props.auth === false
+              ? this.renderError()
+              : this.renderCards()}
+          </Row>
+        </Container>
       </div>
     );
   }

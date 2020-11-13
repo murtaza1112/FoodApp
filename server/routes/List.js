@@ -79,7 +79,7 @@ module.exports = (app) => {
     else if (type === "indian") data = await Indian.find({});
     else if (type === "chinese") data = await Chinese.find({});
     else data = await Continental.find({});
-    console.log(data);
+    console.log(type,data);
     res.send(data);
   });
 
@@ -122,10 +122,12 @@ module.exports = (app) => {
   });
 
   function isLoggedIn(req, res, next) {
+    console.log("Is loggedin.")
     if (req.isAuthenticated()) {
       console.log("User is logged in.");
       next();
     } else {
+      console.log("User is not signed in.")
       res.redirect("/");
     }
   }

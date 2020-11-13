@@ -16,6 +16,7 @@ import history from "../history";
 
 class App extends React.Component {
   componentDidMount() {
+    // debugger;
     console.log("get user.")
     this.props.fetchUser();
     this.props.fetchItems("italian");
