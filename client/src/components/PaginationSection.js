@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import * as actions from "../actions";
-import {Col,Row} from "react-bootstrap";
+import {Col,Row,Spinner} from "react-bootstrap";
 import ListCard from "./ListCard";
 
 const style = {
@@ -52,14 +52,17 @@ class PaginationSection extends Component {
           dataLength={current || 0}
           next={this.fetchMoreData}
           hasMore={this.state.hasMore}
-          loader={<h4>Loading...</h4>}
+          loader={
+            <p style={{ textAlign: "center" }}>
+              <Spinner animation="border" variant="secondary" />
+            </p>
+          }
           endMessage={
             <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
+              <h4 className="finale">You Have Reached The End:)</h4>
             </p>
           }
         >
-          >
           <Row>
             {Object.values(this.props.list[type]).map((elem) => {
               return (

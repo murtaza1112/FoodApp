@@ -351,7 +351,7 @@ class AdminNew extends Component {
     return (
       <div className="adminNew wrapper">
         <div className="form-wrapper">
-          <h2>Add A Form</h2>
+          <h2>Add An Item</h2>
           <form onSubmit={this.handleSubmit} noValidate>
             {this.renderForm()}
             <div className="submit">

@@ -1,0 +1,10 @@
+@media screen and (min-width: 992px) {
+  .AdminView{
+    max-width: 100%;
+
+  }
+}
+.AdminView{
+  background-color: var(--bg-color);
+  max-width:100%;
+}

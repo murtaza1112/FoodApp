@@ -20,16 +20,18 @@ nav {
   padding-top: 25px;
   padding-bottom: 0px;
   color: var(--heading);
+  color: var(--gold);
+  text-shadow: 1px 1px white;
+  font-style: italic;
 }
 
 .MidSection_Tabs a {
   color: var(--disabledLink);
 }
 .MidSection_Tabs {
-  max-width: 1000px;
+  max-width: 1200px;
   align-items: center;
-  margin : 0 auto;
-
+  margin: 0 auto;
 }
 
 .MidSection_Tabs .nav-tabs .nav-item.show .nav-link,
@@ -58,6 +60,11 @@ nav {
 .MidSection_Tabs .nav-tabs :hover {
   border-bottom: 4px solid var(--gold);
   color: var(--gold);
+}
+
+.MidSection .nav-link {
+  min-width: 25%;
+  text-align: center;
 }
 
 @media screen and (max-width: 422px) {
@@ -153,3 +160,12 @@ nav {
 @media only screen and (max-width: 479px){
   .MidSection_Tabs .tab .nav-tabs li{ width: 100%; }
 } */
+
+.finale {
+  /* background-color: var(--cardBgColor); */
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: var(--gold);
+  text-shadow: 1px 1px white;
+  font-style: italic;
+}

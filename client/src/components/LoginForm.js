@@ -29,14 +29,19 @@ const renderField = ({
 );
 
 class LoginForm extends Component {
+  state = {
+    isClicked : false
+  }
   handleSubmit = (e) => {
     console.log(e);
     console.log(this.props);
+    this.setState({isClicked:true});
     this.props.checkUser(e);
+    this.setState({isClicked:false});
   }
 
   render() {
-      console.log(this.props);
+      console.log(this.state);
     if (this.props.auth === null) {
       return <div>Loading...</div>;
     }
@@ -51,10 +56,10 @@ class LoginForm extends Component {
             <Field name="email" component={renderField} label="Email" />
           </div>
           <div className="form-group">
-            <Field name="password" component={renderField} label="password" />
+            <Field name="password" type="password" component={renderField} label="password" />
           </div>
           <div className="form-group">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" variant="warning" block>LOGIN</Button>
           </div>
         </form>
       </Container>

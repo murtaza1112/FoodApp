@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./Navbar.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Navbar as NavBar, Nav } from "react-bootstrap";
 import * as actions from "../actions";
@@ -80,45 +80,67 @@ class Navbar extends React.Component {
   render() {
     // console.log(this.props);
     console.log(this.props.auth);
+    var name;
 
+    if(this.props.auth.local)
+    name = this.props.auth.local.email.split('@')[0];
+
+    if (this.props.auth.google) 
+    name = this.props.auth.google.email.split("@")[0];
+
+    if(name)
+    name= name.charAt(0).toUpperCase() + name.slice(1);
     return (
-      <NavBar sticky="top" bg="dark" expand="lg">
-        <NavBar.Brand href="/">Foodzie</NavBar.Brand>
-        <NavBar.Toggle aria-controls="basic-navbar-nav" />
-        <NavBar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/list" className="nav-link">
-              My Favourites
-            </Link>
+      <div className="mynavbar">
+        <NavBar variant="light" expand="lg">
+          <NavBar.Brand href="/">Foodzie</NavBar.Brand>
+          <NavBar.Toggle aria-controls="basic-navbar-nav" />
+          <NavBar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+              <Link to="/list" className="nav-link">
+                My Favourites
+              </Link>
+              {this.props.auth && this.props.auth.admin ? (
+                <Link className="nav-link" to="/admin">
+                  Show Items
+                </Link>
+              ) : (
+                <span></span>
+              )}
+              {this.props.auth && this.props.auth.admin ? (
+                <Link className="nav-link" to="/admin/new">
+                  Add Item
+                </Link>
+              ) : (
+                <span></span>
+              )}
 
-            {this.props.auth ? (
-              <Link className="nav-link" onClick={this.onLogOut}>
-                Logout
-              </Link>
-            ) : (
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            )}
-
-            {this.props.auth && this.props.auth.admin ? (
-              <Link className="nav-link" to="/admin">Show Items</Link>
-            ) : (
-              <span></span>
-            )}
-            {this.props.auth && this.props.auth.admin ? (
-              <Link className="nav-link" to="/admin/new">
-                Add Item
-              </Link>
-            ) : (
-              <span></span>
-            )}
-          </Nav>
-        </NavBar.Collapse>
-      </NavBar>
+              {name ? (
+                <Link to="/" className="nav-link">
+                  <span>
+                    <i class="fa fa-user space" aria-hidden="true"></i>
+                    {name}
+                  </span>
+                </Link>
+              ) : (
+                <span></span>
+              )}
+              {this.props.auth ? (
+                <Link className="nav-link" onClick={this.onLogOut}>
+                  Logout
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              )}
+            </Nav>
+          </NavBar.Collapse>
+        </NavBar>
+      </div>
     );
   }
 }

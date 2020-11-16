@@ -24,7 +24,7 @@ class LoginAndSignUp extends Component {
               <SignUpForm />
             </Tab>
           </Tabs>
-          <Button onClick={this.onGoogleSign}>Google SignIn</Button>
+          {/* <Button onClick={this.onGoogleSign}>Google SignIn</Button> */}
         </div>
       </div>
     );

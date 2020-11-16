@@ -3,10 +3,65 @@
   background-color: var(--bg-color);
   overflow: scroll;
   display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .auth {
   max-width: 400px;
+    border: solid 3px #b9965f;
+    /* border-radius: 15px; */
   /* display:flex; */
   /* flex-direction: row; */
   
+}
+
+.Login .btn{
+  /* border: solid 3px #b9965f; */
+  border-radius: 15px;
+  /* background-color: var(--bg-color); */
+}
+.Login .nav-link{
+  width:50%;
+  text-align: center;
+}
+
+.Login .tab-content{
+  padding-top:10px;
+}
+
+.Login a {
+  color: var(--disabledLink);
+}
+.Login {
+  align-items: center;
+  margin : 0 auto;
+}
+
+.Login .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--gold);
+  border: none;
+  border-bottom: 4px solid var(--gold);
+
+  /* background-color: red; */
+}
+.Login nav {
+  padding-top: 2%;
+}
+.Login .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--gold);
+  border: none;
+  border-bottom: 4px solid var(--gold);
+  background-color: var(--insideTabColor);
+}
+
+.Login .nav-tabs {
+  border-bottom: 1px solid #d6cbad;
+
+}
+
+.Login .nav-tabs :hover {
+  border-bottom: 4px solid var(--gold);
+  color: var(--gold);
 }

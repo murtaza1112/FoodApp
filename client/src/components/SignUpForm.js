@@ -49,10 +49,10 @@ class SignUpForm extends Component {
             <Field name="email" component={renderField} label="Email" />
           </div>
           <div className="form-group">
-            <Field name="password" component={renderField} label="password" />
+            <Field name="password" type="password" component={renderField} label="password" />
           </div>
           <div className="form-group">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" block variant="warning">SIGNUP</Button>
           </div>
         </form>
       </Container>

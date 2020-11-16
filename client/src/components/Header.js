@@ -16,14 +16,14 @@ class Header extends Component {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img src="/assets/italian2.jpg" alt="Third slide" />
+            <img src="/assets/2.jpg" alt="Third slide" />
             <Carousel.Caption>
               <h3>Continental</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img src="/assets/italian2.jpg" alt="Third slide" />
+            <img src="/assets/4.jpg" alt="Third slide" />
 
             <Carousel.Caption>
               <h3>Indian</h3>
@@ -33,7 +33,7 @@ class Header extends Component {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img src="/assets/italian2.jpg" alt="Third slide" />
+            <img src="/assets/3.jpg" alt="Third slide" />
 
             <Carousel.Caption>
               <h3>Chinese</h3>

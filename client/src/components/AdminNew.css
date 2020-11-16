@@ -15,13 +15,13 @@ SILVER PINK: #C9ADA7
 */
 
 .wrapper {
-  height: 97vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #4A4E69;
+  background-color: var(--bg-color);
 }
 
 .adminNew .form-wrapper {
@@ -63,6 +63,7 @@ SILVER PINK: #C9ADA7
   margin-bottom: 0.5em;
   color: #444;
   font-weight: lighter;
+  max-width:200px;
 }
 
 .adminNew input {
@@ -112,9 +113,11 @@ SILVER PINK: #C9ADA7
 .fullName,
 .email,
 .password {
+  padding-top:2.5rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  padding-bottom: 2.5rem;
+  min-height: 100vh;
 }
 
 .adminNew .fullName {

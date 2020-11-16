@@ -66,12 +66,8 @@ module.exports = (app) => {
         return res.send(false);
       }
       req.logIn(user, function (err) {
-        if (err) {
+        if (err) 
           return next(err);
-        }
-        if (err) {
-          return next(err);
-        }
         return res.send(user);
       });
     })(req, res, next);
@@ -101,6 +97,11 @@ module.exports = (app) => {
   //   });
   app.post("/api/signup", (req, res, next) => {
     passport.authenticate("local-signup", function (err, user, info) {
+      if (!user) {
+        console.log("NO USER FOUND.");
+        return res.send(false);
+      }
+      console.log(user);
       req.logIn(user, function (err) {
         if (err) {
           return next(err);
@@ -109,7 +110,7 @@ module.exports = (app) => {
       });
     })(req, res, next);
     console.log("this part called");
-    res.send(false);
+    // res.send(false);
   });
 
   app.post("/api/user", async (req, res) => {

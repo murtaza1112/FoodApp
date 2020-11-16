@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListCardTemplate from "./ListCardTemplate";
 import * as actions from "../actions";
+import { Row, Container, Col } from "react-bootstrap";
+import  "./AdminView.css";
 
 class AdminView extends Component {
   componentDidMount() {
@@ -20,11 +22,11 @@ class AdminView extends Component {
       //   console.log(items);
       final = final.concat(
         items.map((elem) => {
-        //   console.log(elem);
+          //   console.log(elem);
           return (
-            <div>
+            <Col xs={12} sm={12} md={6} lg={3}>
               <ListCardTemplate details={elem} />
-            </div>
+            </Col>
           );
         })
       );
@@ -33,7 +35,13 @@ class AdminView extends Component {
     return final;
   }
   render() {
-    return <div>{this.renderCards()}</div>;
+    return (
+      <div className="AdminView">
+        <Container style={{ maxWidht: "1050px" }}>
+          <Row>{this.renderCards()}</Row>
+        </Container>
+      </div>
+    );
   }
 }
 

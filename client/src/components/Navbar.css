@@ -109,7 +109,7 @@ nav ul li a::after {
   transform-origin: right;
 }
 
-/* overlay used for navbar */
+overlay used for navbar
 .overlay {
   background-color: rgba(0, 0, 0, 0.95);
   position: fixed;
@@ -189,6 +189,7 @@ nav ul li a:hover::after {
     z-index: auto;
     float: none;
   }
+
 /* 
   .menu-toggle {
     display: block;
@@ -226,3 +227,13 @@ nav ul li a:hover::after {
     transform: scale(1);
     opacity: 1;
   } */
+
+  .space{
+    padding-right:4px;
+  }
+  .mynavbar .navbar{
+    background-color: #f1ece0;
+  }
+  .mynavbar .nav-link{
+        color: #463d11c4;
+  }

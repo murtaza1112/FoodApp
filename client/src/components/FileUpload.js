@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Alert from "../components/Alert";
+import { Form } from "react-bootstrap";
 
 class FileUpload extends React.Component {
   state = {
@@ -10,7 +10,10 @@ class FileUpload extends React.Component {
   componentDidMount() {
     console.log(this.props.image);
     if (this.props.image)
-      this.setState({ fileInputState: this.props.image, previewSource: this.props.image });
+      this.setState({
+        fileInputState: this.props.image,
+        previewSource: this.props.image,
+      });
   }
 
   handleFileInputChange = (e) => {
@@ -24,7 +27,7 @@ class FileUpload extends React.Component {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       this.uploadImage(reader.result);
-      this.setState({ ...this.setState,previewSource:reader.result });
+      this.setState({ ...this.setState, previewSource: reader.result });
     };
   };
 
@@ -37,7 +40,7 @@ class FileUpload extends React.Component {
       //   });
       this.props.onImageUpload(base64EncodedImage);
       // setSuccessMsg("Image uploaded successfully");
-      console.log("Image upload successful.")
+      console.log("Image upload successful.");
     } catch (err) {
       console.error(err);
       // setErrMsg("Something went wrong!");
@@ -50,7 +53,15 @@ class FileUpload extends React.Component {
         {/* <Alert msg={errMsg} type="danger" /> */}
         {/* <Alert msg={successMsg} type="success" /> */}
         <span>Upload Image</span>
-        <input
+        {/* <input
+          id="fileInput"
+          type="file"
+          name="image"
+          onChange={this.handleFileInputChange}
+          className="form-input"
+          accept="image/x-png,image/gif,image/jpeg"
+        /> */}
+        <Form.File
           id="fileInput"
           type="file"
           name="image"
@@ -58,9 +69,14 @@ class FileUpload extends React.Component {
           className="form-input"
           accept="image/x-png,image/gif,image/jpeg"
         />
+
         {this.props.error && <span className="error">{this.props.error}</span>}
         {this.state.previewSource && (
-          <img src={this.state.previewSource} alt="chosen" style={{ height: "300px" }} />
+          <img
+            src={this.state.previewSource}
+            alt="chosen"
+            style={{width:"100%",height:"auto"}}
+          />
         )}
       </div>
     );
