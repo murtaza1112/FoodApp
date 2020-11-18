@@ -11,23 +11,25 @@ import AdminView from "./AdminView";
 import AdminNew from "./AdminNew";
 import AdminEdit from "./AdminEdit";
 import history from "../history";
-
+import Message from "./Message";
 
 class App extends React.Component {
   componentDidMount() {
     // debugger;
-    console.log("get user.")
+    // console.log("get user.")
     this.props.fetchUser();
+    // console.log("Who is the user")
     // this.props.fetchItems("italian");
     // this.props.fetchItems("continental");
     // this.props.fetchItems("indian");
     // this.props.fetchItems("chinese");
   }
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     if (this.props.auth === false) {
       history.push("/login");
     }
+
     if(this.props.auth===null){
       return(
         <div>
@@ -40,6 +42,7 @@ class App extends React.Component {
         {/* Navbar  */}
         <Router history={history}>
           <Navbar />
+          <Message />
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/list" component={List} />
@@ -56,7 +59,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  // console.log(state)
   return { auth: state.auth };
 };
 

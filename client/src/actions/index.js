@@ -7,7 +7,9 @@ import {
   UPDATE_ITEM,
   CREATE_ITEM,
   FETCH_ITEM,
-  FETCH_SIZE
+  FETCH_SIZE,
+  ADD_MESSAGE,
+  REMOVE_MESSAGE,
 } from "./types";
 import history from "../history";
 
@@ -18,11 +20,12 @@ export const createUser = (user) => async (dispatch) => {
   // console.log(res);
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
 //signIn
 export const checkUser = (user) => async (dispatch) => {
   console.log("User is checked.");
   const res = await axios.post("/api/login", user);
-  // console.log(res);
+  console.log(res);
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
@@ -118,8 +121,21 @@ export const getMaxLength = (type) => async (dispatch) => {
 
 //paginate action
 export const getNextContent = (value) => async (dispatch) => {
-  console.log("getting next content",value);
-  const res = await axios.post(paginateUrl,value);
+  console.log("getting next content", value);
+  const res = await axios.post(paginateUrl, value);
   console.log(res);
   dispatch({ type: FETCH_ITEMS, payload: [res.data, value.type] });
+};
+
+//MESSAGES ERROR
+//remove messages
+
+export const removeMessage = () => (dispatch) => {
+  console.log("Removing message");
+  dispatch({ type: REMOVE_MESSAGE });
+};
+
+export const addMessage = (message) => (dispatch) => {
+  console.log("Adding message", message);
+  dispatch({ type: ADD_MESSAGE, payload: message });
 };

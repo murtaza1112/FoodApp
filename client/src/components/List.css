@@ -60,3 +60,6 @@
 .List .alert-heading {
   font-style: italic;
 }
+.List .row{
+  justify-content:center;
+}

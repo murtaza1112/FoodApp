@@ -20,7 +20,7 @@ class PaginationSection extends Component {
   };
   componentDidMount() {
     //get max length
-    console.log("get max length");
+    // console.log("get max length");
     this.props.getMaxLength(this.props.type);
   }
 
@@ -29,7 +29,7 @@ class PaginationSection extends Component {
     const current = Object.keys(this.props.list[type]).length;
     const maxLength = this.props.size[type];
     const obj = { type, current, limit };
-    console.log("The next data is being fetched:",obj, maxLength);
+    // console.log("The next data is being fetched:",obj, maxLength);
 
     if (current >= maxLength) {
       this.setState({ hasMore: false });

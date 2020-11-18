@@ -98,7 +98,7 @@ module.exports = (app) => {
   app.post("/api/signup", (req, res, next) => {
     passport.authenticate("local-signup", function (err, user, info) {
       if (!user) {
-        console.log("NO USER FOUND.");
+        console.log("USER ALREADY EXISTS");
         return res.send(false);
       }
       console.log(user);

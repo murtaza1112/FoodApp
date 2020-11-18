@@ -8,3 +8,6 @@ export const DELETE_ITEM = "delete_item";
 export const FETCH_ITEM = "fetch_item";
 
 export const FETCH_SIZE = "fetch_size";
+
+export const ADD_MESSAGE = "add_message";
+export const REMOVE_MESSAGE = "remove_message";
