@@ -95,8 +95,11 @@ class Navbar extends React.Component {
         <NavBar variant="light" expand="lg">
           <NavBar.Brand href="/">Foodzie</NavBar.Brand>
           <NavBar.Toggle aria-controls="basic-navbar-nav" />
-          <NavBar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+          <NavBar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav>
               <Link to="/" className="nav-link">
                 Home
               </Link>

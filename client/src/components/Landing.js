@@ -4,8 +4,11 @@ import {connect} from "react-redux";
 import history from "../history";
 import MidSection from "./MidSection";
 class Landing extends Component {
-     
+
   render() {
+    if (this.props.auth === false) {
+      history.push("/login");
+    }
     
     return (
       <div>
